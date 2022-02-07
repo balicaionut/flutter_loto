@@ -14,8 +14,8 @@ class _SliderPageState extends State<SliderPage> {
   List images = ["loto-649.png", "loto-joker.png", "loto-540.png"];
   List numbers = [6, 5, 6];
 
-
-  final fiveOfFortyFive = nextNumbers(6, min: 1, max: 40);
+  final sixOfFortyNine = nextNumbers(6, min: 1, max: 49);
+  final fiveOfFortyFive = nextNumbers(5, min: 1, max: 45);
   final joker = nextNumber(min: 1, max: 20);
   final fiveOfForty = nextNumbers(6, min: 1, max: 40);
 
@@ -62,15 +62,17 @@ class _SliderPageState extends State<SliderPage> {
                         Wrap(
                             children: List.generate(numbers[index], (i) {
                           return AppButton(
-                              size: 60,
-                              color: Colors.black,
-                              backgroundColor: Colors.lightGreen.shade50,
-                              borderColor: Colors.lightGreen,
-                              text: index == 0
-                                  ? (i + 1).toString() + " 6/49"
-                                  : (index == 1
-                                      ? (i + 1).toString() + " J"
-                                      : (i + 1).toString() + " 5/40"));
+                            fontSize: 30,
+                            size: 60,
+                            color: Colors.black,
+                            backgroundColor: Colors.lightGreen.shade50,
+                            borderColor: Colors.lightGreen,
+                            text: index == 0
+                                ? (sixOfFortyNine[i] + 1).toString()
+                                : (index == 1
+                                    ? (fiveOfFortyFive[i] + 1).toString()
+                                    : (fiveOfForty[i] + 1).toString()),
+                          );
                         })),
                         index == 1
                             ? Row(
@@ -80,12 +82,13 @@ class _SliderPageState extends State<SliderPage> {
                                   ),
                                   const Text('Joker:'),
                                   AppButton(
+                                      fontSize: 30,
                                       size: 60,
                                       color: Colors.black,
                                       backgroundColor:
                                           Colors.lightGreen.shade50,
                                       borderColor: Colors.lightGreen,
-                                      text: index == 1 ? "Joker" : "")
+                                      text: index == 1 ? joker.toString() : "")
                                 ],
                               )
                             : const SizedBox(

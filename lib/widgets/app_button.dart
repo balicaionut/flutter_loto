@@ -8,14 +8,16 @@ class AppButton extends StatelessWidget {
   final Color backgroundColor;
   final double size;
   final Color borderColor;
+  final double fontSize;
 
-  const AppButton(
-      {Key? key,
-        this.text = "",
-        required this.size,
-        required this.color,
-        required this.backgroundColor,
-        required this.borderColor})
+
+  const AppButton({Key? key,
+    this.text = "",
+    required this.size,
+    required this.color,
+    required this.backgroundColor,
+    required this.borderColor,
+    this.fontSize = 16})
       : super(key: key);
 
   @override
@@ -27,7 +29,7 @@ class AppButton extends StatelessWidget {
           border: Border.all(color: borderColor, width: 1.0),
           borderRadius: BorderRadius.circular(15),
           color: backgroundColor),
-      child: Center(child: AppText(text: text!, color: color)),
+      child: Center(child: AppText(text: text!, color: color, size: fontSize,)),
     );
   }
 }
