@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../services/random_generators.dart';
 import '../widgets/app_button.dart';
 
-
 class SliderPage extends StatefulWidget {
   const SliderPage({Key? key}) : super(key: key);
 
@@ -14,11 +13,12 @@ class _SliderPageState extends State<SliderPage> {
   List images = ["loto-649.png", "loto-joker.png", "loto-540.png"];
   List numbers = [6, 5, 6];
 
-
-
-
   @override
   Widget build(BuildContext context) {
+    List<int> _sixOfFortyNine = sixOfFortyNine();
+    List<int> _fiveOfFortyFive = fiveOfFortyFive();
+    List<int> _fiveOfForty = fiveOfForty();
+
     return Scaffold(
       body: PageView.builder(
           scrollDirection: Axis.vertical,
@@ -67,10 +67,10 @@ class _SliderPageState extends State<SliderPage> {
                             backgroundColor: Colors.lightGreen.shade50,
                             borderColor: Colors.lightGreen,
                             text: index == 0
-                                ? (sixOfFortyNine()[i]).toString()
+                                ? (_sixOfFortyNine[i]).toString()
                                 : (index == 1
-                                    ? (fiveOfFortyFive()[i]).toString()
-                                    : (fiveOfForty()[i]).toString()),
+                                    ? (_fiveOfFortyFive[i]).toString()
+                                    : (_fiveOfForty[i]).toString()),
                           );
                         })),
                         index == 1
@@ -88,7 +88,8 @@ class _SliderPageState extends State<SliderPage> {
                                       backgroundColor:
                                           Colors.lightGreen.shade50,
                                       borderColor: Colors.lightGreen,
-                                      text: index == 1 ? joker().toString() : "")
+                                      text:
+                                          index == 1 ? joker().toString() : "")
                                 ],
                               )
                             : const SizedBox(
@@ -105,28 +106,25 @@ class _SliderPageState extends State<SliderPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
-                              sixOfFortyNine();
                               //temp;
                             });
                           },
                           child: const SizedBox(
                             width: 200,
-                            child: AppButton(fontSize: 30,
+                            child: AppButton(
+                                fontSize: 30,
                                 height: 60,
                                 width: 120,
                                 color: Colors.black,
-                                backgroundColor:
-                                Colors.white,
+                                backgroundColor: Colors.white,
                                 borderColor: Colors.lightGreen,
                                 text: "Reset"),
                           ),
                         )
                       ],
-
-
-                      )
+                    )
                   ],
                 ),
               ),
