@@ -6,14 +6,16 @@ class AppButton extends StatelessWidget {
   final String? text;
   final Color color;
   final Color backgroundColor;
-  final double size;
+  final double height;
+  final double width;
   final Color borderColor;
   final double fontSize;
 
 
   const AppButton({Key? key,
     this.text = "",
-    required this.size,
+    required this.height,
+    required this.width,
     required this.color,
     required this.backgroundColor,
     required this.borderColor,
@@ -23,8 +25,8 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size,
-      height: size,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
           border: Border.all(color: borderColor, width: 1.0),
           borderRadius: BorderRadius.circular(15),

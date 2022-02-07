@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../services/random_generator.dart';
+import '../services/random_generators.dart';
 import '../widgets/app_button.dart';
+
 
 class SliderPage extends StatefulWidget {
   const SliderPage({Key? key}) : super(key: key);
@@ -14,10 +14,8 @@ class _SliderPageState extends State<SliderPage> {
   List images = ["loto-649.png", "loto-joker.png", "loto-540.png"];
   List numbers = [6, 5, 6];
 
-  final sixOfFortyNine = nextNumbers(6, min: 1, max: 49);
-  final fiveOfFortyFive = nextNumbers(5, min: 1, max: 45);
-  final joker = nextNumber(min: 1, max: 20);
-  final fiveOfForty = nextNumbers(6, min: 1, max: 40);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +61,16 @@ class _SliderPageState extends State<SliderPage> {
                             children: List.generate(numbers[index], (i) {
                           return AppButton(
                             fontSize: 30,
-                            size: 60,
+                            height: 60,
+                            width: 60,
                             color: Colors.black,
                             backgroundColor: Colors.lightGreen.shade50,
                             borderColor: Colors.lightGreen,
                             text: index == 0
-                                ? (sixOfFortyNine[i] + 1).toString()
+                                ? (sixOfFortyNine()[i]).toString()
                                 : (index == 1
-                                    ? (fiveOfFortyFive[i] + 1).toString()
-                                    : (fiveOfForty[i] + 1).toString()),
+                                    ? (fiveOfFortyFive()[i]).toString()
+                                    : (fiveOfForty()[i]).toString()),
                           );
                         })),
                         index == 1
@@ -83,12 +82,13 @@ class _SliderPageState extends State<SliderPage> {
                                   const Text('Joker:'),
                                   AppButton(
                                       fontSize: 30,
-                                      size: 60,
+                                      height: 60,
+                                      width: 60,
                                       color: Colors.black,
                                       backgroundColor:
                                           Colors.lightGreen.shade50,
                                       borderColor: Colors.lightGreen,
-                                      text: index == 1 ? joker.toString() : "")
+                                      text: index == 1 ? joker().toString() : "")
                                 ],
                               )
                             : const SizedBox(
@@ -96,7 +96,37 @@ class _SliderPageState extends State<SliderPage> {
                                 height: 0,
                               )
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              sixOfFortyNine();
+                              //temp;
+                            });
+                          },
+                          child: const SizedBox(
+                            width: 200,
+                            child: AppButton(fontSize: 30,
+                                height: 60,
+                                width: 120,
+                                color: Colors.black,
+                                backgroundColor:
+                                Colors.white,
+                                borderColor: Colors.lightGreen,
+                                text: "Reset"),
+                          ),
+                        )
+                      ],
+
+
+                      )
                   ],
                 ),
               ),
