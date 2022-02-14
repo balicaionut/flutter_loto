@@ -11,7 +11,7 @@ class SliderPage extends StatefulWidget {
 
 class _SliderPageState extends State<SliderPage> {
   List images = ["loto-649.png", "loto-joker.png", "loto-540.png"];
-  List numbers = [6, 5, 6];
+  List numbers = [6, 5, 5];
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,10 @@ class _SliderPageState extends State<SliderPage> {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  const Text('Joker:'),
+                                  const Text(
+                                    'J:',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                   AppButton(
                                       fontSize: 30,
                                       height: 60,
